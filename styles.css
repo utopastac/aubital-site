@@ -1,0 +1,250 @@
+@font-face {
+  font-family: "Funnel Display";
+  src: url("./fonts/FunnelDisplay.ttf") format("truetype");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --ink: #f4f1ec;
+  --ink-dim: rgba(244, 241, 236, 0.68);
+  --muted: rgba(244, 241, 236, 0.55);
+  --line: rgba(244, 241, 236, 0.16);
+  --bg: #07090e;
+  --bg-rise: #121722;
+  --ember: #e8a078;
+  --mist: #8eb0d8;
+  --glass: rgba(8, 10, 16, 0.5);
+  --glass-strong: rgba(244, 241, 236, 0.92);
+  --glass-border: rgba(244, 241, 236, 0.18);
+  --space-xs: 0.35rem;
+  --space-s: 0.6rem;
+  --space-m: 1rem;
+  --space-l: 1.5rem;
+  --space-xl: 2.25rem;
+  --space-2xl: 3.5rem;
+  --space-3xl: 5.5rem;
+  --radius: 1.25rem;
+  --page-pad: clamp(1.25rem, 4vw, 2.5rem);
+  --content: 68rem;
+  --font: "Funnel Display", "SF Pro Display", "Segoe UI", sans-serif;
+  --mono: "SF Pro Mono", "SF Mono", ui-monospace, Menlo, monospace;
+  --measure: 40rem;
+  font-family: var(--font);
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(110% 70% at 78% -8%, color-mix(in srgb, var(--mist) 26%, transparent), transparent 55%),
+    radial-gradient(90% 55% at 8% 108%, color-mix(in srgb, var(--ember) 18%, transparent), transparent 52%),
+    linear-gradient(180deg, var(--bg-rise), var(--bg) 44%);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.18em;
+
+  &:hover {
+    color: var(--ember);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--mist);
+    outline-offset: 3px;
+  }
+}
+
+.frame {
+  width: min(100%, var(--content));
+  margin-inline: auto;
+  padding-inline: var(--page-pad);
+}
+
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  backdrop-filter: blur(16px);
+
+  & .frame {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-m);
+    min-height: 4.5rem;
+  }
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--ink);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--ink);
+  }
+}
+
+.brandIcon {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.55rem;
+}
+
+.brandName {
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.nav {
+  display: flex;
+  gap: var(--space-l);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+
+  & a {
+    text-decoration: none;
+  }
+
+  & a[aria-current="page"] {
+    color: var(--ember);
+  }
+}
+
+.doc {
+  width: min(100%, var(--measure));
+  margin: var(--space-2xl) auto var(--space-3xl);
+  padding-inline: var(--page-pad);
+
+  & h1 {
+    margin: 0 0 var(--space-s);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+  }
+
+  & h2 {
+    margin: var(--space-xl) 0 var(--space-s);
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  & p,
+  & li {
+    color: var(--ink-dim);
+  }
+
+  & .meta {
+    margin: 0 0 var(--space-l);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  & ul {
+    padding-left: 1.15rem;
+  }
+
+  & li + li {
+    margin-top: var(--space-s);
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-s);
+  margin: var(--space-l) 0 var(--space-xl);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.15rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  background: var(--glass);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  text-decoration: none;
+  backdrop-filter: blur(12px);
+
+  &:hover {
+    color: var(--ink);
+    border-color: color-mix(in srgb, var(--ink) 40%, transparent);
+  }
+
+  &.secondary {
+    background: transparent;
+  }
+}
+
+.siteFooter {
+  border-top: 1px solid var(--line);
+  padding-block: var(--space-l);
+
+  & .frame {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-l);
+  }
+
+  & p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  & p + p {
+    margin-top: 0.35rem;
+  }
+}
+
+.footerLinks {
+  display: flex;
+  gap: var(--space-l);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+
+  & a {
+    text-decoration: none;
+  }
+}
